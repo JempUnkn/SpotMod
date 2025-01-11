@@ -41,14 +41,14 @@ color 0B
 setlocal enabledelayedexpansion
 cls
 
+set "baseversion=0.2.4.2"
 
 powershell -Command "Write-Host '                                               ' -ForegroundColor Green"
 powershell -Command "Write-Host '          _____ _____ _____ _____    _____ _____ ____  ' -ForegroundColor Green"
 powershell -Command "Write-Host '         |   __|  _  |     |_   _|  |     |     |    \ ' -ForegroundColor Green"
 powershell -Command "Write-Host '         |__   |   __|  |  | | |    | | | |  |  |  |  |' -ForegroundColor Green"
 powershell -Command "Write-Host '         |_____|__|  |_____| |_|    |_|_|_|_____|____/ ' -ForegroundColor Green"
-powershell -Command "Write-Host '                                               ' -ForegroundColor Green"
-
+powershell -Command "Write-Host '         [%baseversion%]' -ForegroundColor red"
 
 echo.
 echo.
@@ -56,6 +56,28 @@ set "diretorio_script=%~dp0" >nul
 powershell -Command "Write-Host '[INFO] O MOD foi executado a partir do diretorio: %diretorio_script%.' -ForegroundColor yellow"
 set "PTBR=00000416"
 set "ENUS=00000409"
+
+
+powershell -Command "Write-Host '[INFO] Verificando atualização' -ForegroundColor yellow"
+powershell -Command "(New-Object System.Net.WebClient).DownloadFile('https://raw.githubusercontent.com/JempUnkn/SpotMod/refs/heads/main/version', '%TEMP%\version.txt')"
+set /p version=<"%TEMP%\version.txt"
+
+
+
+if not "%version%" == "%baseversion%" (
+    msg * Versão desatualizada
+    powershell -Command "Write-Host '[INFO] Versão Desatualizada' -ForegroundColor red"
+    powershell -Command "Write-Host '[INFO] Recomandamos baixar e utilizar a Versão mais recentes.' -ForegroundColor red"
+    timeout /t 5 >nul
+    powershell -Command "(New-Object System.Net.WebClient).DownloadFile('https://raw.githubusercontent.com/JempUnkn/SpotMod/refs/heads/main/base.bat', '%diretorio_script%\start%version%.bat')"
+    pause
+    del "%TEMP%\version.txt"
+    exit
+) else (
+    echo Atualizado [%version%]
+)
+del "%TEMP%\version.txt"
+
 for /f "tokens=3" %%A in ('reg query "HKCU\Control Panel\International" /v Locale 2^>nul') do set "locale=%%A"
 if "%locale%"=="%PTBR%" (
     powershell -Command "Write-Host '[INFO] Idioma detectado PTBR.' -ForegroundColor yellow"
