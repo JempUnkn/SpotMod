@@ -27,9 +27,28 @@ Principais recursos do **SpotMod**:
 
 A versão beta **0.2.4.2** já está disponível no repositório, trazendo suporte para **Português (BR)** e **Inglês (EN)**. Baixe agora e transforme seu Spotify!
 
+## **Sumário**
+
+1. [**Introdução ao SpotMod**](#spotmod---personalize-e-expanda-seu-spotify)
+2. [**Requisitos e Instalação**](#requisitos-e-instalação)
+3. [**Instalação do Spotify e SpotMod**](#1-instalação-do-spotify-e-spotmod)
+4. [**Funcionalidades do SpotMod**](#2-funcionalidades-do-spotmod)
+5. [**Configurando o SpotMod**](#3-configurando-o-spotmod)
+6. [**Dicas para Melhor Experiência**](#4-dicas-para-melhor-experiência)
+7. [**Erros Comuns e Soluções**](#5-erros-comuns-e-soluções)
+8. [**Atualizações**](#6-atualizações)
+9. [**Licença**](#licença)
+
+
 # Tutorial Completo: Instalando e Usando o SpotMod
 
 Este guia irá te ajudar a instalar e configurar o SpotMod, um cliente modificado para Spotify que injeta o Spicetify e adiciona um Marketplace exclusivo, permitindo instalar temas, plugins e outras personalizações com facilidade.
+
+## **Requisitos e Instalação**
+
+### **Requisitos:**
+- **Spotify** instalado no seu sistema.(o client pode tentar fazer o download sozinho caso não tenha instalado o Spotify)
+- **Windows** (ou outros sistemas compatíveis)
 
 ## 1. **Instalação do Spotify e SpotMod**
 
@@ -114,6 +133,7 @@ O SpotMod será atualizado frequentemente. Para verificar atualizações, visite
 Para atualizar, basta baixar a nova versão e executar o instalador novamente.
 
 ---
+## Licença
 Created by me :)
 <div align="center">
 
