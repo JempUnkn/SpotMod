@@ -140,8 +140,6 @@ powershell -Command "(New-Object System.Net.WebClient).DownloadFile('https://raw
 start %TEMP%\License.html
 timeout /t 2 >nul
 del %TEMP%\License.html
-del langPTBR.bat
-del langEN.bat
 exit
 
 :task
