@@ -47,7 +47,7 @@ Este guia irá te ajudar a instalar e configurar o SpotMod, um cliente modificad
 ## **Requisitos e Instalação**
 
 ### **Requisitos:**
-- **Spotify** instalado no seu sistema.(o client pode tentar fazer o download sozinho caso não tenha instalado o Spotify)
+- **Spotify** instalado no seu sistema (o client pode tentar fazer o download sozinho caso não tenha instalado o Spotify)
 - **Windows** (ou outros sistemas compatíveis)
 
 ## 1. **Instalação do Spotify e SpotMod**
