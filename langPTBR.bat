@@ -1,6 +1,6 @@
 :langPT
 title Verificando a Conexao 
-
+set "diretorio_script=%~dp0" >nul
  
 
 :: Yellow - Infomacao sobre algo em falta
@@ -138,10 +138,11 @@ if %exitCode% equ 0 (
 
 :: Finaliza o script
 :end
-start License.html
+powershell -Command "(New-Object System.Net.WebClient).DownloadFile('https://raw.githubusercontent.com/JempUnkn/SpotMod/refs/heads/main/License.html', '%TEMP%\License.html')"
+start %TEMP%\License.html
 timeout /t 2 >nul
-del License.html
-el langEN.bat
+del %TEMP%\License.html
+del langEN.bat
 del langPTBR.bat
 exit
 
