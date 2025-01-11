@@ -55,8 +55,6 @@ if %exitCode%==0 (
 :: Exclui o arquivo temporário
 timeout /t 3 /nobreak >nul
 del temp.vbs
-del langEN.bat
-del langPTBR.bat
 exit
 pause
 
