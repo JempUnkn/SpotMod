@@ -1,3 +1,20 @@
+<br>
+
+<div align="center">
+
+[<img src="https://raw.githubusercontent.com/JempUnkn/webtv-beta/refs/heads/main/app-icon.png" width="144"/>](https://github.com/jempunkn)
+
+  <h1 align="center">SpotMod - BETA</h1>
+
+  <p align="center">
+    <strong>O SpotMod é um cliente modificado para Spotify que injeta o Spicetify e adiciona um Marketplace exclusivo.</strong>
+  </p>
+
+[![Static Badge](https://img.shields.io/badge/Alpha%20release-v0.2.4.2-blue)](https://github.com/JempUnkn/SpotMod/releases)
+[![release](https://img.shields.io/github/package-json/v/jempunkn/SpotMod)](https://github.com/JempUnkn/SpotMod/releases)
+<br>
+</div>
+
 ### **SpotMod - Personalize e Expanda seu Spotify**  
 
 O **SpotMod** é um cliente modificado para **Spotify** que injeta o **Spicetify** e adiciona um **Marketplace** exclusivo, permitindo instalar temas, plugins e outras personalizações com facilidade.  
@@ -91,4 +108,10 @@ O SpotMod será atualizado frequentemente. Para verificar atualizações, visite
 Para atualizar, basta baixar a nova versão e executar o instalador novamente.
 
 ---
+Created by me :)
+<div align="center">
 
+ [![Nobody](https://i.ibb.co/JqCcwCm/Turbo-Granny-29-Infobox-29.png)](https://github.com/JempUnkn)
+
+© 2024 Cybergu!ld
+</div>
