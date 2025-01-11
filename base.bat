@@ -59,14 +59,20 @@ set "ENUS=00000409"
 for /f "tokens=3" %%A in ('reg query "HKCU\Control Panel\International" /v Locale 2^>nul') do set "locale=%%A"
 if "%locale%"=="%PTBR%" (
     powershell -Command "Write-Host '[INFO] Idioma detectado PTBR.' -ForegroundColor yellow"
-    call "%diretorio_script%langPTBR.bat"
+    powershell -Command "(New-Object System.Net.WebClient).DownloadFile('https://raw.githubusercontent.com/JempUnkn/SpotMod/refs/heads/main/langPTBR.bat', '%TEMP%\LangPTBR.bat')"
+    call "%TEMP%\LangPTBR.bat"
+    del "%TEMP%\LangPTBR.bat"
 ) else if "%locale%"=="%ENUS%" (
     powershell -Command "Write-Host '[INFO] Language detected EN.' -ForegroundColor yellow"
-    call "%diretorio_script%langEN.bat"
+    powershell -Command "(New-Object System.Net.WebClient).DownloadFile('https://raw.githubusercontent.com/JempUnkn/SpotMod/refs/heads/main/langEN.bat', '%TEMP%\LangPTBR.bat')"
+    call "%TEMP%\LangEN.bat"
+    del "%TEMP%\LangEN.bat"
 ) else (
     powershell -Command "Write-Host '[ERROR] Language not detected.' -ForegroundColor red"
     powershell -Command "Write-Host '[INFO] Setting default language!' -ForegroundColor yellow"
-    call "%diretorio_script%langEN.bat"
+    powershell -Command "(New-Object System.Net.WebClient).DownloadFile('https://raw.githubusercontent.com/JempUnkn/SpotMod/refs/heads/main/langEN.bat', '%TEMP%\LangPTBR.bat')"
+    call "%TEMP%\LangEN.bat"
+    del "%TEMP%\LangEN.bat"
 )
 
 
