@@ -84,17 +84,20 @@ if "%locale%"=="%PTBR%" (
     powershell -Command "(New-Object System.Net.WebClient).DownloadFile('https://raw.githubusercontent.com/JempUnkn/SpotMod/refs/heads/main/langPTBR.bat', '%TEMP%\LangPTBR.bat')"
     call "%TEMP%\LangPTBR.bat"
     del "%TEMP%\LangPTBR.bat"
+    exit
 ) else if "%locale%"=="%ENUS%" (
     powershell -Command "Write-Host '[INFO] Language detected EN.' -ForegroundColor yellow"
     powershell -Command "(New-Object System.Net.WebClient).DownloadFile('https://raw.githubusercontent.com/JempUnkn/SpotMod/refs/heads/main/langEN.bat', '%TEMP%\LangPTBR.bat')"
     call "%TEMP%\LangEN.bat"
     del "%TEMP%\LangEN.bat"
+    exit
 ) else (
     powershell -Command "Write-Host '[ERROR] Language not detected.' -ForegroundColor red"
     powershell -Command "Write-Host '[INFO] Setting default language!' -ForegroundColor yellow"
     powershell -Command "(New-Object System.Net.WebClient).DownloadFile('https://raw.githubusercontent.com/JempUnkn/SpotMod/refs/heads/main/langEN.bat', '%TEMP%\LangPTBR.bat')"
     call "%TEMP%\LangEN.bat"
     del "%TEMP%\LangEN.bat"
+    exit
 )
 
 
