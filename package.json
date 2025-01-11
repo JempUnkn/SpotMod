@@ -1,0 +1,10 @@
+{
+  "name": "spotmod",
+  "version": "0.2.4.2",
+  "description": "SpotMod é um cliente modificado do Spotify que injeta o Spicetify e adiciona um Marketplace.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JempUnkn/spotmod.git"
+  },
+  "license": "MIT"
+}
