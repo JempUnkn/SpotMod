@@ -140,4 +140,6 @@ Created by me :)
  [![Nobody](https://i.ibb.co/JqCcwCm/Turbo-Granny-29-Infobox-29.png)](https://github.com/JempUnkn)
 
 © 2024 Cybergu!ld
+
+Este projeto está licenciado sob a Licença XYZ. Veja o arquivo [LICENSE](https://jempunkn.github.io/SpotMod/License.html) para mais informações.
 </div>
