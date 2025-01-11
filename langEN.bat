@@ -55,7 +55,7 @@ if %exitCode%==0 (
 :: Delete the temporary file
 timeout /t 3 /nobreak >nul
 del temp.vbs
-exit
+exit /b
 pause
 
 :verification
