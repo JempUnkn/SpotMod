@@ -99,6 +99,12 @@ Solução: Baixe novamente e extraia com o Windows Explorer ou WinRAR.
 
 Solução: Reinicie o Spotify e tente novamente. Se persistir, reinstale o SpotMod.
 
+```diff
++ Lembre-se de fazer *LOGIN* antes de proceder com o download
+- Caso contrário, o cliente não funcionará até que você faça o login e tente novamente
+-- Se o problema persistir, verifique suas credenciais ou a conexão com a internet
+```
+
 ## 6. **Atualizações**
 
 O SpotMod será atualizado frequentemente. Para verificar atualizações, visite:
