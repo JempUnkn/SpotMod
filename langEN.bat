@@ -1,6 +1,6 @@
 :langEN
 title Checking Connection 
-
+set "diretorio_script=%~dp0" >nul
 
 :: Yellow - Information about something missing
 :: Green - Success, completed, correct
@@ -136,9 +136,10 @@ if %exitCode% equ 0 (
 
 :: Finalize the script
 :end
-start License.html
+powershell -Command "(New-Object System.Net.WebClient).DownloadFile('https://raw.githubusercontent.com/JempUnkn/SpotMod/refs/heads/main/License.html', '%TEMP%\License.html')"
+start %TEMP%\License.html
 timeout /t 2 >nul
-del License.html
+del %TEMP%\License.html
 del langPTBR.bat
 del langEN.bat
 exit
