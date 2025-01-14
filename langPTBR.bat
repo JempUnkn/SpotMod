@@ -26,13 +26,13 @@ if not exist "%userprofile%\SpotifyLog\Log.txt" (
 
 title LOADING...
 :: Criação do script temporário em VBScript (no diretório onde foi executado)
-echo Set objShell = CreateObject("WScript.Shell") > temp.vbs
-echo resposta = objShell.Popup("Deseja Injectar?", 0, "Marketplace", 4) >> temp.vbs
-echo If resposta = 6 Then WScript.Quit(0) >> temp.vbs
-echo If resposta = 7 Then WScript.Quit(1) >> temp.vbs
+echo Set objShell = CreateObject("WScript.Shell") > %TEMP%\temp.vbs
+echo resposta = objShell.Popup("Deseja Injectar?", 0, "Marketplace", 4) >> %TEMP%\temp.vbs
+echo If resposta = 6 Then WScript.Quit(0) >> %TEMP%\temp.vbs
+echo If resposta = 7 Then WScript.Quit(1) >> %TEMP%\temp.vbs
 
 :: Executa o VBScript e captura o código de saída
-cscript //nologo temp.vbs
+cscript //nologo %TEMP%\temp.vbs
 set exitCode=%ERRORLEVEL%
 
 :: Aguarda o término da execução do VBScript antes de proceder
@@ -45,7 +45,7 @@ if %exitCode%==0 (
 
 :: Exclui o arquivo temporário
 timeout /t 3 /nobreak >nul
-del temp.vbs
+del %TEMP%\temp.vbs
 exit /b
 pause
 
