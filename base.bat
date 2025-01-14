@@ -1,8 +1,5 @@
 ::[Bat To Exe Converter]
 ::
-::fBE1pAF6MU+EWHreyHcjLQlHcCe7Hk6IIYA1xMzHy++UqVkSRN4SV6ub6aSBNOkV83nGYJ8h0kZ2kcgJAghdMBq/YwNU
-::fBE1pAF6MU+EWHreyHcjLQlHcCe7Hk6IIYA1xMzHy++UqVkSRN4SV6ub6aSBNOkV83nodJgq5k54qoUODQ84
-::fBE1pAF6MU+EWHreyHcjLQlHcCe7Hk6IIYA1xMzHy++UqVkSRN4SV6ub6aSBNOkV83nodJgq81QUmsoYbA==
 ::YAwzoRdxOk+EWAnk
 ::fBw5plQjdG8=
 ::YAwzuBVtJxjWCl3EqQJgSA==
@@ -53,16 +50,28 @@ powershell -Command "Write-Host '         [%baseversion%]' -ForegroundColor red"
 echo.
 echo.
 set "diretorio_script=%~dp0" >nul
-powershell -Command "Write-Host '[INFO] O MOD foi executado a partir do diretorio: %diretorio_script%.' -ForegroundColor yellow"
+powershell -Command "Write-Host '[LOG] O MOD foi executado a partir do diretorio: %diretorio_script%.' -ForegroundColor yellow"
 set "PTBR=00000416"
 set "ENUS=00000409"
 
 
-powershell -Command "Write-Host '[INFO] Verificando atualização' -ForegroundColor yellow"
+curl -s https://itigic.com/wp-content/uploads/2020/01/ping-command.jpg --output "%userprofile%\net.jpg"
+if %errorlevel% neq 0 (
+    msg * "Disconectado a uma rede"
+    powershell -Command "Write-Host '[Error]: Sem Internet' -ForegroundColor Red"
+    timeout /t 5 /nobreak >nul  
+    exit
+) else (
+    powershell -Command "Write-Host '[INFO] Conectado a uma rede....' -ForegroundColor Green"
+    del %userprofile%\net.jpg >nul
+)
+
+
+powershell -Command "Write-Host '[INFO] Verificando atualizacoo' -ForegroundColor yellow"
 powershell -Command "(New-Object System.Net.WebClient).DownloadFile('https://raw.githubusercontent.com/JempUnkn/SpotMod/refs/heads/main/version', '%TEMP%\version.txt')"
 set /p version=<"%TEMP%\version.txt"
 
-
+ 
 
 if not "%version%" == "%baseversion%" (
     msg * Versão desatualizada
@@ -95,7 +104,7 @@ if "%locale%"=="%PTBR%" (
     powershell -Command "Write-Host '[ERROR] Language not detected.' -ForegroundColor red"
     powershell -Command "Write-Host '[INFO] Setting default language!' -ForegroundColor yellow"
     powershell -Command "(New-Object System.Net.WebClient).DownloadFile('https://raw.githubusercontent.com/JempUnkn/SpotMod/refs/heads/main/langEN.bat', '%TEMP%\LangPTBR.bat')"
-    call "%TEMP%\LangEN.bat"
+    call "%TEMP%\LangEN.bat "
     del "%TEMP%\LangEN.bat"
     exit
 )
