@@ -6,7 +6,7 @@ set "diretorio_script=%~dp0" >nul
 :: Yellow - Infomacao sobre algo em falta
 :: Green - Sucesso, concluido, certo
 :: Cyan - Comum
-:: Red - erros
+:: Red - erros 
   
 for /f "tokens=1-4 delims=/ " %%a in ('date /t') do (set dia=%%a& set mes=%%b& set ano=%%c) >nul
 for /f "tokens=1-2 delims=: " %%a in ('time /t') do (set hora=%%a& set minuto=%%b) >nul
@@ -23,16 +23,7 @@ if not exist "%userprofile%\SpotifyLog\Log.txt" (
 ) else (
     echo Processo Iniciado {%hora%:%minuto%} no dia {%dia%/%mes%/%ano%} >> "%userprofile%\SpotifyLog\Log.txt"
 )
-curl -s https://itigic.com/wp-content/uploads/2020/01/ping-command.jpg --output "%userprofile%\net.jpg"
-if %errorlevel% neq 0 (
-    msg * "Disconectado a uma rede"
-    powershell -Command "Write-Host '[Error]: Sem Internet' -ForegroundColor Red"
-    timeout /t 5 /nobreak >nul  
-    exit
-) else (
-    powershell -Command "Write-Host '[INFO] Conectado a uma rede....' -ForegroundColor Green"
-    del %userprofile%\net.jpg >nul
-)
+
 title LOADING...
 :: Criação do script temporário em VBScript (no diretório onde foi executado)
 echo Set objShell = CreateObject("WScript.Shell") > temp.vbs
@@ -149,4 +140,4 @@ if %errorlevel% equ 0 (
     taskkill /f /im Spotify.exe
 ) else (
     powershell -Command "Write-Host '[INFO] Spotify ja esta fechado, continuando o processo...' -ForegroundColor Cyan"
-)
+) 
