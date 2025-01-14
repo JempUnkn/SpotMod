@@ -67,7 +67,7 @@ if %errorlevel% neq 0 (
 )
 
 
-powershell -Command "Write-Host '[INFO] Verificando atualizacoo' -ForegroundColor yellow"
+powershell -Command "Write-Host '[INFO] Verificando atualizacao' -ForegroundColor yellow"
 powershell -Command "(New-Object System.Net.WebClient).DownloadFile('https://raw.githubusercontent.com/JempUnkn/SpotMod/refs/heads/main/version', '%TEMP%\version.txt')"
 set /p version=<"%TEMP%\version.txt"
 
