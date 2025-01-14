@@ -22,16 +22,7 @@ if not exist "%userprofile%\SpotifyLog\Log.txt" (
 ) else (
     echo Process Started {%hour%:%minute%} on the day {%day%/%month%/%year%} >> "%userprofile%\SpotifyLog\Log.txt"
 )
-curl -s https://itigic.com/wp-content/uploads/2020/01/ping-command.jpg --output "%userprofile%\net.jpg"
-if %errorlevel% neq 0 (
-    msg * "Disconnected from network"
-    powershell -Command "Write-Host '[Error]: No Internet' -ForegroundColor Red" 
-    timeout /t 5 /nobreak >nul
-    exit
-) else (
-    powershell -Command "Write-Host '[INFO] Connected to a network....' -ForegroundColor Green"
-    del %userprofile%\net.jpg >nul
-) 
+
 
 title LOADING...
 :: Create temporary VBScript (in the directory where it was executed)
@@ -55,7 +46,7 @@ if %exitCode%==0 (
 :: Delete the temporary file
 timeout /t 3 /nobreak >nul
 del temp.vbs
-exit /b
+exit
 pause
 
 :verification
