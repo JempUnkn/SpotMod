@@ -44,6 +44,9 @@ A versão beta **0.2.4.2** já está disponível no repositório, trazendo supor
 
 Este guia irá te ajudar a instalar e configurar o SpotMod, um cliente modificado para Spotify que injeta o Spicetify e adiciona um Marketplace exclusivo, permitindo instalar temas, plugins e outras personalizações com facilidade.
 
+> [!NOTE]
+> Faça o Login no Spotify antes de iniciar qualquer procedimento
+
 ## **Requisitos e Instalação**
 
 ### **Requisitos:**
@@ -118,9 +121,10 @@ Solução: Baixe novamente e extraia com o Windows Explorer ou WinRAR.
 
 Solução: Reinicie o Spotify e tente novamente. Se persistir, reinstale o SpotMod.
 
+> [!NOTE]
+> Lembre-se de fazer *LOGIN* antes de proceder com o download.
+> Caso contrário, o cliente não funcionará até que você faça o login e tente novamente
 ```diff
-+ Lembre-se de fazer *LOGIN* antes de proceder com o download
-- Caso contrário, o cliente não funcionará até que você faça o login e tente novamente
 -- Se o problema persistir, verifique suas credenciais ou a conexão com a internet
 ```
 
