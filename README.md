@@ -145,5 +145,5 @@ Created by me :)
 
 © 2024 Cybergu!ld
 
-Este projeto está licenciado sob a Licença XYZ. Veja o arquivo [LICENSE](https://jempunkn.github.io/SpotMod/License.html) para mais informações.
+Este projeto está licenciado sob a Licença MIT. Veja o arquivo [LICENSE](https://jempunkn.github.io/SpotMod/License.html) para mais informações.
 </div>
