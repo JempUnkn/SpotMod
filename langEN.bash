@@ -35,15 +35,17 @@ else
     echo "Process Started $hour:$minute on $day/$month/$year" >> "$log_file"
 fi
 
+
 # Verifica a conexão de rede
-wget -q --spider https://itigic.com/wp-content/uploads/2020/01/ping-command.jpg
-if [ $? -ne 0 ]; then
+response=$(curl -Is https://google.com | grep -E "HTTP/2 200|HTTP/2 301")
+
+if [ -n "$response" ]; then
+    echo -e "${GREEN}[INFO] Connected to a network [$reponse]....${RESET}"
+else
     echo -e "${RED}[Error]: No Internet${RESET}"
     exit 1
-else
-    echo -e "${GREEN}[INFO] Connected to a network....${RESET}"
-    rm -f "$HOME/net.jpg" > /dev/null
 fi
+
 
 # Exemplo de prompt de injeção (simulado)
 echo -e "${CYAN}Do you want to inject? (y/n)${RESET}"
