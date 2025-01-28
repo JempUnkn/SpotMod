@@ -27,9 +27,11 @@ if [ ! -d "$log_dir" ]; then
     mkdir -p "$log_dir"
     if [ $? -ne 0 ]; then
         echo -e "${RED}[Error]: Attempt to create Log Directory${RESET}"
+        echo "Attempt to create Log Directory $hour:$minute on $day/$month/$year" >> "$log_file"
         exit 1
     else
         echo -e "${GREEN}[INFO] Log Directory created successfully!${RESET}"
+        echo "Log Directory created successfully! $hour:$minute on $day/$month/$year" >> "$log_file"
     fi
 else
     echo "Process Started $hour:$minute on $day/$month/$year" >> "$log_file"
@@ -41,8 +43,10 @@ response=$(curl -Is https://google.com | grep -E "HTTP/2 200|HTTP/2 301")
 
 if [ -n "$response" ]; then
     echo -e "${GREEN}[INFO] Connected to a network [$reponse]....${RESET}"
+    echo "Connected to a network $hour:$minute on $day/$month/$year" >> "$log_file"
 else
     echo -e "${RED}[Error]: No Internet${RESET}"
+    echo "No Internet $hour:$minute on $day/$month/$year" >> "$log_file"
     exit 1
 fi
 
