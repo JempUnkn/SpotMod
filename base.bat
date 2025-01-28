@@ -1,36 +1,3 @@
-::[Bat To Exe Converter]
-::
-::YAwzoRdxOk+EWAnk
-::fBw5plQjdG8=
-::YAwzuBVtJxjWCl3EqQJgSA==
-::ZR4luwNxJguZRRnk
-::Yhs/ulQjdF+5
-::cxAkpRVqdFKZSjk=
-::cBs/ulQjdF+5
-::ZR41oxFsdFKZSDk=
-::eBoioBt6dFKZSDk=
-::cRo6pxp7LAbNWATEpCI=
-::egkzugNsPRvcWATEpCI=
-::dAsiuh18IRvcCxnZtBJQ
-::cRYluBh/LU+EWAjk
-::YxY4rhs+aU+IeA==
-::cxY6rQJ7JhzQF1fEqQJgZkkaGErRXA==
-::ZQ05rAF9IBncCkqN+0xwdVsEAlbMaCXpZg==
-::ZQ05rAF9IAHYFVzEqQIDOBRAYQuGXA==
-::eg0/rx1wNQPfEVWB+kM9LVsJDDeSM3+zAKwx5+yb
-::fBEirQZwNQPfEVWB+kM9LVsJDDeSM3+XCbF8
-::cRolqwZ3JBvQF1fEqQIDOBRAYQuGfCb6K7QO4+3v/+aGoUh9
-::dhA7uBVwLU+EWHq91mcCDy4VYCDi
-::YQ03rBFzNR3SWATElA==
-::dhAmsQZ3MwfNWATE9ltwCyJ2aTalCSqWIvW+Iaipv7jTwg==
-::ZQ0/vhVqMQ3MEVWAtB9wJhQ0
-::Zg8zqx1/OA3MEVWAtB9wMR5HLA==
-::dhA7pRFwIByZRRmh2mgfEXs=
-::Zh4grVQjdCyDJGyX8VAjFDhtbiGwG16TKpEgzO3o5P6IsnEwe8Z/S5/Uzr2IOdwx/0zocaoexnVOtcQIRBZNcgaiYg46ricMtGGRNonM/V2vHgbaqE4oHgU=
-::YB416Ek+ZG8=
-::
-::
-::978f952a14a936cc963da21a135fa983
 @echo off
 :: chcp 65001 >nul
 mode 100,24
@@ -55,14 +22,20 @@ set "PTBR=00000416"
 set "ENUS=00000409"
 
 
+for /f "tokens=1-4 delims=/ " %%a in ('date /t') do (set dia=%%a& set mes=%%b& set ano=%%c) >nul
+for /f "tokens=1-2 delims=: " %%a in ('time /t') do (set hora=%%a& set minuto=%%b) >nul
+
+
 curl -s https://itigic.com/wp-content/uploads/2020/01/ping-command.jpg --output "%userprofile%\net.jpg"
 if %errorlevel% neq 0 (
     msg * "Disconectado a uma rede"
     powershell -Command "Write-Host '[Error]: Sem Internet' -ForegroundColor Red"
+    echo [%dia%/%mes%/%ano% %hora%:%minuto%] Disconectado a uma rede! >> "%userprofile%\SpotifyLog\Log.txt"
     timeout /t 5 /nobreak >nul  
     exit
 ) else (
     powershell -Command "Write-Host '[INFO] Conectado a uma rede....' -ForegroundColor Green"
+    echo [%dia%/%mes%/%ano% %hora%:%minuto%] Online >> "%userprofile%\SpotifyLog\Log.txt"
     del %userprofile%\net.jpg >nul
 )
 
@@ -76,6 +49,7 @@ set /p version=<"%TEMP%\version.txt"
 if not "%version%" == "%baseversion%" (
     msg * Versão desatualizada
     powershell -Command "Write-Host '[INFO] Versão Desatualizada' -ForegroundColor red"
+    echo [%dia%/%mes%/%ano% %hora%:%minuto%] OLD Verison detected >> "%userprofile%\SpotifyLog\Log.txt"
     powershell -Command "Write-Host '[INFO] Recomandamos baixar e utilizar a Versão mais recentes.' -ForegroundColor red"
     timeout /t 5 >nul
     powershell -Command "(New-Object System.Net.WebClient).DownloadFile('https://raw.githubusercontent.com/JempUnkn/SpotMod/refs/heads/main/base.bat', '%diretorio_script%\start%version%.bat')"
@@ -84,6 +58,7 @@ if not "%version%" == "%baseversion%" (
     exit
 ) else (
     echo Atualizado [%version%]
+    echo [%dia%/%mes%/%ano% %hora%:%minuto%] v%version% >> "%userprofile%\SpotifyLog\Log.txt"
 )
 del "%TEMP%\version.txt"
 
@@ -91,12 +66,14 @@ for /f "tokens=3" %%A in ('reg query "HKCU\Control Panel\International" /v Local
 if "%locale%"=="%PTBR%" (
     powershell -Command "Write-Host '[INFO] Idioma detectado PTBR.' -ForegroundColor yellow"
     powershell -Command "(New-Object System.Net.WebClient).DownloadFile('https://raw.githubusercontent.com/JempUnkn/SpotMod/refs/heads/main/langPTBR.bat', '%TEMP%\LangPTBR.bat')"
+    echo [%dia%/%mes%/%ano% %hora%:%minuto%] LANG: pt_BR >> "%userprofile%\SpotifyLog\Log.txt"
     call "%TEMP%\LangPTBR.bat"
     del "%TEMP%\LangPTBR.bat"
     exit
 ) else if "%locale%"=="%ENUS%" (
     powershell -Command "Write-Host '[INFO] Language detected EN.' -ForegroundColor yellow"
-    powershell -Command "(New-Object System.Net.WebClient).DownloadFile('https://raw.githubusercontent.com/JempUnkn/SpotMod/refs/heads/main/langEN.bat', '%TEMP%\LangPTBR.bat')"
+    powershell -Command "(New-Object System.Net.WebClient).DownloadFile('https://raw.githubusercontent.com/JempUnkn/SpotMod/refs/heads/main/langEN.bat', '%TEMP%\LangEN.bat')"
+    echo [%dia%/%mes%/%ano% %hora%:%minuto%] LANG: en_US >> "%userprofile%\SpotifyLog\Log.txt"
     call "%TEMP%\LangEN.bat"
     del "%TEMP%\LangEN.bat"
     exit
@@ -104,6 +81,7 @@ if "%locale%"=="%PTBR%" (
     powershell -Command "Write-Host '[ERROR] Language not detected.' -ForegroundColor red"
     powershell -Command "Write-Host '[INFO] Setting default language!' -ForegroundColor yellow"
     powershell -Command "(New-Object System.Net.WebClient).DownloadFile('https://raw.githubusercontent.com/JempUnkn/SpotMod/refs/heads/main/langEN.bat', '%TEMP%\LangPTBR.bat')"
+    echo [%dia%/%mes%/%ano% %hora%:%minuto%] Error LANG: en_US >> "%userprofile%\SpotifyLog\Log.txt"
     call "%TEMP%\LangEN.bat "
     del "%TEMP%\LangEN.bat"
     exit
