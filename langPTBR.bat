@@ -17,49 +17,56 @@ if not exist "%userprofile%\SpotifyLog\Log.txt" (
     if %errorlevel% neq 0 (
         msg * Erro ao criar um Diretorio LOG para o SpotMod
         powershell -Command "Write-Host '[Error]: Tentativa de criacao do Diretorio Log' -ForegroundColor Red"
+        echo [%dia%/%mes%/%ano% %hora%:%minuto%] Error: Tentativa de criacao do DIR >> "%userprofile%\SpotifyLog\Log.txt"
     ) else (
         powershell -Command "Write-Host '[INFO] Diretorio Log criado com sucesso!' -ForegroundColor Green"
+        echo [%dia%/%mes%/%ano% %hora%:%minuto%] Diretorio LOG Criado >> "%userprofile%\SpotifyLog\Log.txt"
     )
 ) else (
-    echo Processo Iniciado {%hora%:%minuto%} no dia {%dia%/%mes%/%ano%} >> "%userprofile%\SpotifyLog\Log.txt"
+    echo [%dia%/%mes%/%ano% %hora%:%minuto%] Processo Iniciado >> "%userprofile%\SpotifyLog\Log.txt"
 )
 
 title LOADING...
 :: Criação do script temporário em VBScript (no diretório onde foi executado)
-echo Set objShell = CreateObject("WScript.Shell") > %TEMP%\temp.vbs
-echo resposta = objShell.Popup("Deseja Injectar?", 0, "Marketplace", 4) >> %TEMP%\temp.vbs
-echo If resposta = 6 Then WScript.Quit(0) >> %TEMP%\temp.vbs
-echo If resposta = 7 Then WScript.Quit(1) >> %TEMP%\temp.vbs
+echo Set objShell = CreateObject("WScript.Shell") > temp.vbs
+echo resposta = objShell.Popup("Deseja Injectar?", 0, "Marketplace", 4) >> temp.vbs
+echo If resposta = 6 Then WScript.Quit(0) >> temp.vbs
+echo If resposta = 7 Then WScript.Quit(1) >> temp.vbs
 
 :: Executa o VBScript e captura o código de saída
-cscript //nologo %TEMP%\temp.vbs
+cscript //nologo temp.vbs
 set exitCode=%ERRORLEVEL%
 
 :: Aguarda o término da execução do VBScript antes de proceder
 if %exitCode%==0 (
     powershell -Command "Write-Host '[INFO] Continuando o processo...' -ForegroundColor Yellow"
+    echo [%dia%/%mes%/%ano% %hora%:%minuto%] Client escolheu: Continuar com o processo >> "%userprofile%\SpotifyLog\Log.txt"
     goto verificacao
 ) else (
     powershell -Command "Write-Host '[CANCELANDO...]' -ForegroundColor red" 
+    echo [%dia%/%mes%/%ano% %hora%:%minuto%] Processo cancelado >> "%userprofile%\SpotifyLog\Log.txt"
 )
 
 :: Exclui o arquivo temporário
 timeout /t 3 /nobreak >nul
-del %TEMP%\temp.vbs
+del temp.vbs
 exit /b
 pause
 
 
 
 :verificacao
+echo [%dia%/%mes%/%ano% %hora%:%minuto%] Verificacao basicas >> "%userprofile%\SpotifyLog\Log.txt"
 powershell -Command "Write-Host '[INFO] Verificando se o Spotify esta instalado' -ForegroundColor Cyan"
 if exist %userprofile%\AppData\Roaming\Spotify\Spotify.exe (
     powershell -Command "Write-Host '[INFO] Spotify Instalado' -ForegroundColor Green"
+    echo [%dia%/%mes%/%ano% %hora%:%minuto%] Spotify encontra-se Instalado >> "%userprofile%\SpotifyLog\Log.txt"
     goto :continue
 )
 
 rem Caso o Spotify nao esteja instalado
 powershell -Command "Write-Host '[INFO] Spotify nao instalado!' -ForegroundColor Yellow"
+echo [%dia%/%mes%/%ano% %hora%:%minuto%] Spotify nao Instalado! >> "%userprofile%\SpotifyLog\Log.txt"
 timeout /t 3 /nobreak >nul
 
 rem Procurando o executavel do Spotify
@@ -68,14 +75,17 @@ powershell -Command "Write-Host '[INFO] Procurando o executavel do Spotify...' -
 if not exist "%userprofile%\Downloads\SpotifySetup.exe" (
     powershell -Command "Write-Host '[INFO] Executavel do Spotify nao encontrado!' -ForegroundColor Red"
     powershell -Command "Write-Host '[INFO] Baixando o Spotify...' -ForegroundColor Yellow"
+    echo [%dia%/%mes%/%ano% %hora%:%minuto%] Try Download Spotify >> "%userprofile%\SpotifyLog\Log.txt"
     set downloadDir=%temp%\spotmod
     mkdir %downloadDir%
     curl https://download.scdn.co/SpotifySetup.exe -o %downloadDir%\SpotifySetup.exe
     powershell -Command "Write-Host '[INFO] Baixando & Instalando o Spotify...' -ForegroundColor Cyan"
+    echo [%dia%/%mes%/%ano% %hora%:%minuto%] Iniciando o Spotify >> "%userprofile%\SpotifyLog\Log.txt"
     start /wait %downloadDir%\SpotifySetup.exe
     del /q %downloadDir%\*
     rmdir %downloadDir%
     powershell -Command "Write-Host '[INFO] Spotify instalado com sucesso!' -ForegroundColor Green"
+    echo [%dia%/%mes%/%ano% %hora%:%minuto%] Download Concluido >> "%userprofile%\SpotifyLog\Log.txt"
     powershell -Command "Write-Host '[IMPORTANT] Faz o Login numa conta do Spotify antes de continuar!' -ForegroundColor Yellow"
     timeout /t 7 /nobreak >nul
     echo.
@@ -99,10 +109,13 @@ title LOADING...
 powershell -Command "Write-Host '[INFO] Continuando o processo...' -ForegroundColor Yellow"
 
 :: verificar se o mod ta instalado
+echo [%dia%/%mes%/%ano% %hora%:%minuto%] Verificando a existencia do Spicetify >> "%userprofile%\SpotifyLog\Log.txt"
 spicetify --help >nul
 if %errorlevel% equ 0 (
     powershell -Command "Write-Host '[INFO] Spicetify Detectado.' -ForegroundColor Green"
+    echo [%dia%/%mes%/%ano% %hora%:%minuto%] Spicetify Encontrado >> "%userprofile%\SpotifyLog\Log.txt"
     powershell -Command "Write-Host '[UPDATING...]' -ForegroundColor Yellow"
+    echo [%dia%/%mes%/%ano% %hora%:%minuto%] Update >> "%userprofile%\SpotifyLog\Log.txt"
     call :task
     spicetify update
     call :end
@@ -127,6 +140,7 @@ if %exitCode% equ 0 (
 
 :: Finaliza o script
 :end
+echo [%dia%/%mes%/%ano% %hora%:%minuto%] END... >> "%userprofile%\SpotifyLog\Log.txt"
 powershell -Command "(New-Object System.Net.WebClient).DownloadFile('https://raw.githubusercontent.com/JempUnkn/SpotMod/refs/heads/main/License.html', '%TEMP%\License.html')"
 start %TEMP%\License.html
 timeout /t 2 >nul
@@ -137,7 +151,9 @@ exit
 tasklist | find /i "Spotify.exe" >nul
 if %errorlevel% equ 0 (
     powershell -Command "Write-Host '[INFO] Fechando o Spotify...' -ForegroundColor Yellow"
+    echo [%dia%/%mes%/%ano% %hora%:%minuto%] Finalizando Spotify >> "%userprofile%\SpotifyLog\Log.txt"
     taskkill /f /im Spotify.exe
 ) else (
     powershell -Command "Write-Host '[INFO] Spotify ja esta fechado, continuando o processo...' -ForegroundColor Cyan"
+    echo [%dia%/%mes%/%ano% %hora%:%minuto%] Spotify Fechado! >> "%userprofile%\SpotifyLog\Log.txt"
 ) 
