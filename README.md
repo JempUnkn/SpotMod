@@ -108,6 +108,8 @@ Após a instalação, abra o **SpotMod** e vá até as configurações para pers
 - Para futuras atualizações, basta baixar a nova versão e reinstalar.
 
 ## 5. **Erros Comuns e Soluções**
+Solução: Acesse o FAQ oficial e segue as instruções, [aqui](https://github.com/spicetify/cli/issues/898)
+### **Erro: "Cannot detect Spotify location" spotify_path in config-xpui.ini**
 
 ### **Erro: "Spotify não foi encontrado"**
 
