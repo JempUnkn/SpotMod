@@ -37,7 +37,7 @@ A versão beta **0.2.4.2** já está disponível no repositório, trazendo supor
 6. [**Dicas para Melhor Experiência**](#4-dicas-para-melhor-experiência)
 7. [**Erros Comuns e Soluções**](#5-erros-comuns-e-soluções)
 8. [**Atualizações**](#6-atualizações)
-9. [**Licença**](#licença)
+9. [**Licença**](https://jempunkn.github.io/SpotMod/License.html)
 
 
 # Tutorial Completo: Instalando e Usando o SpotMod
