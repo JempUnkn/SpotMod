@@ -10,8 +10,8 @@
     <strong>O SpotMod é um cliente modificado para Spotify que injeta o Spicetify e adiciona um Marketplace exclusivo.</strong>
   </p>
 
-[![Static Badge](https://img.shields.io/badge/Alpha%20release-v0.2.4.2-blue)](https://github.com/JempUnkn/SpotMod/releases)
-[![release](https://img.shields.io/github/package-json/v/jempunkn/SpotMod)](https://github.com/JempUnkn/SpotMod/releases)
+[![Static Badge](https://img.shields.io/badge/Alpha%20release-v0.2.5.1-blue)](https://github.com/JempUnkn/SpotMod/releases)
+[![release](https://img.shields.io/github/package-json/v/JempUnkn/SpotMod)](https://github.com/JempUnkn/SpotMod/releases)
 <br>
 </div>
 
@@ -25,7 +25,7 @@ Principais recursos do **SpotMod**:
 ✔ **Otimização de desempenho** para uma experiência mais fluida.  
 ✔ **Instalação simplificada** do Spicetify, sem necessidade de configurações manuais.  
 
-A versão beta **0.2.4.2** já está disponível no repositório, trazendo suporte para **Português (BR)** e **Inglês (EN)**. Baixe agora e transforme seu Spotify!
+A versão beta **0.2.5.1** já está disponível no repositório, trazendo suporte para **Português (BR)** e **Inglês (EN)**. Baixe agora e transforme seu Spotify!
 
 ## **Sumário**
 
