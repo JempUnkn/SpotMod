@@ -5,7 +5,7 @@ color 0B
 setlocal enabledelayedexpansion
 cls
 
-set "baseversion=0.2.4.2"
+set "baseversion=0.2.5.1"
 
 powershell -Command "Write-Host '                                               ' -ForegroundColor Green"
 powershell -Command "Write-Host '          _____ _____ _____ _____    _____ _____ ____  ' -ForegroundColor Green"
