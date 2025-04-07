@@ -65,7 +65,7 @@ for /f "tokens=1-2 delims=: " %%a in ('time /t') do (set hora=%%a& set minuto=%%
 setlocal enabledelayedexpansion
 
 powershell -Command "Write-Host '[INFO] Verificacao do Save' -ForegroundColor Yellow"
-set "dirsave=%TEMP%\.NODELETE"
+set "dirsave=%TEMP%\.config_spotifyMOD"
 
 if not exist "%dirsave%" (
     powershell -Command "Write-Host '[INFO] Selecione local para salvar os Logs' -ForegroundColor Yellow"
