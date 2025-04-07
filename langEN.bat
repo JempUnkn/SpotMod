@@ -11,7 +11,7 @@ for /f "tokens=1-4 delims=/ " %%a in ('date /t') do (set day=%%a& set month=%%b&
 for /f "tokens=1-2 delims=: " %%a in ('time /t') do (set hour=%%a& set minute=%%b) >nul
 
 powershell -Command "Write-Host '[LOG] Process Started at %hour%:%minute% on %day%/%month%/%year%' -ForegroundColor Cyan"
-if not exist "%userprofile%\SpotifyLog\Log.txt" (
+if not exist "%dirsave_upped%\SpotifyLog\Log.txt" (
     mkdir "%userprofile%\SpotifyLog" >nul
     if %errorlevel% neq 0 (
         msg * Error creating LOG Directory for SpotMod
@@ -20,7 +20,7 @@ if not exist "%userprofile%\SpotifyLog\Log.txt" (
         powershell -Command "Write-Host '[INFO] Log Directory created successfully!' -ForegroundColor Green"
     )
 ) else (
-    echo Process Started {%hour%:%minute%} on the day {%day%/%month%/%year%} >> "%userprofile%\SpotifyLog\Log.txt"
+    echo Process Started {%hour%:%minute%} on the day {%day%/%month%/%year%} >> "%dirsave_upped%\SpotifyLog\Log.txt"
 )
 
 
@@ -119,7 +119,7 @@ if %exitCode% equ 0 (
     powershell -Command "Write-Host '[INFO] Finished successfully!' -ForegroundColor Green"
     msg * "Reopen Spotify"
 ) else (
-    powershell -Command "Write-Host '[INFO] Process cancelled by user.' -ForegroundColor Yellow"
+    powershell -Command "Write-Host '[INFO] Process cancelled by user.' -ForegroundColor Red"
 )
 
 
@@ -128,6 +128,7 @@ if %exitCode% equ 0 (
 powershell -Command "(New-Object System.Net.WebClient).DownloadFile('https://raw.githubusercontent.com/JempUnkn/SpotMod/refs/heads/main/License.html', '%TEMP%\License.html')"
 start %TEMP%\License.html
 timeout /t 2 >nul
+msg * "LOG was saved in DIR: %userprofile%/SpotifyLog"
 del %TEMP%\License.html
 exit
 
