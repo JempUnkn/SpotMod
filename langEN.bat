@@ -68,7 +68,7 @@ if not exist "%userprofile%\Downloads\SpotifySetup.exe" (
     powershell -Command "Write-Host '[INFO] Downloading Spotify...' -ForegroundColor Yellow"
     set "downloadDir=%TEMP%\spotmod"
     mkdir %downloadDir%
-    curl https://download.scdn.co/SpotifySetup.exe -o %downloadDir%\SpotifySetup.exe
+    curl https://download.scdn.co/SpotifySetup.exe -o "%downloadDir%\SpotifySetup.exe"
     powershell -Command "Write-Host '[INFO] Downloading & Installing Spotify...' -ForegroundColor Cyan"
     start /wait %downloadDir%\SpotifySetup.exe
     del /q %downloadDir%\*
@@ -82,7 +82,7 @@ if not exist "%userprofile%\Downloads\SpotifySetup.exe" (
 ) else (
     powershell -Command "Write-Host '[INFO] Spotify executable already found.' -ForegroundColor Green"
     set "downloadDir=%userprofile%\Downloads"
-    curl https://download.scdn.co/SpotifySetup.exe -o %downloadDir%\SpotifySetup.exe
+    curl https://download.scdn.co/SpotifySetup.exe -o "%downloadDir%\SpotifySetup.exe"
     powershell -Command "Write-Host '[INFO] Downloading & Installing Spotify...' -ForegroundColor Cyan"
     start /wait %downloadDir%\SpotifySetup.exe
     powershell -Command "Write-Host '[INFO] Spotify installed successfully!' -ForegroundColor Green"
