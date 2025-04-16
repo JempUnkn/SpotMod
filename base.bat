@@ -143,7 +143,7 @@ if "%locale%"=="%PTBR%" (
 ) else (
     powershell -Command "Write-Host '[ERROR] Language not detected.' -ForegroundColor red"
     powershell -Command "Write-Host '[INFO] Setting default language!' -ForegroundColor yellow"
-    powershell -Command "(New-Object System.Net.WebClient).DownloadFile('https://raw.githubusercontent.com/JempUnkn/SpotMod/refs/heads/main/langEN.bat', '%TEMP%\LangPTBR.bat')"
+    powershell -Command "(New-Object System.Net.WebClient).DownloadFile('https://raw.githubusercontent.com/JempUnkn/SpotMod/refs/heads/main/langEN.bat', '%TEMP%\langEN.bat')"
     echo [%dia%/%mes%/%ano% %hora%:%minuto%] Error LANG: en_US >> "%dirsave_upped%\SpotifyLog\Log.txt"
     call "%TEMP%\LangEN.bat "
     del "%TEMP%\LangEN.bat"
